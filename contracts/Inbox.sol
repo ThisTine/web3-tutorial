@@ -22,7 +22,7 @@ contract Inbox{
     }
 
     // make function that send message and tranfer the money to owner
-    function send(string memory _message) public payable{
+    function sendMessage(string memory _message) public payable{
         // push message into array
         messages.push(_message);
         // tranfer money to the owner

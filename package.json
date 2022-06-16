@@ -1,0 +1,26 @@
+{
+  "name": "solidity-tutorial",
+  "version": "1.0.0",
+  "description": "> try using [remix](https://remix.ethereum.org/) to deploy and play with the contract.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThisTine/web3-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThisTine/web3-tutorial/issues"
+  },
+  "homepage": "https://github.com/ThisTine/web3-tutorial#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "ganache": "^7.3.0",
+    "mocha": "^10.0.0",
+    "solc": "^0.8.14-fixed",
+    "web3": "^1.7.3"
+  }
+}
