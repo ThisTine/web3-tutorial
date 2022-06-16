@@ -1,4 +1,11 @@
 # Simple smart contract
 
 ## Usage
-> try using [remix](https://remix.ethereum.org/) to deploy and play with the contract.
+### Install packages
+```
+npm i
+```
+### run test
+```
+npm run test
+```
