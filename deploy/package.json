@@ -2,9 +2,10 @@
   "name": "solidity-tutorial",
   "version": "1.0.0",
   "description": "> try using [remix](https://remix.ethereum.org/) to deploy and play with the contract.",
-  "main": "index.js",
+  "main": "deploy.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "deploy" : "node deploy"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/ThisTine/web3-tutorial#readme",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.9",
     "assert": "^2.0.0",
     "ganache": "^7.3.0",
     "mocha": "^10.0.0",

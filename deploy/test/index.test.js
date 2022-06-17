@@ -5,7 +5,7 @@ const ganache = require("ganache") ;
 const Web3 =  require("web3");
 // import Web3 from 'web3'
 // import {abi,bytecode} from "../compiler.js"
-const {abi,bytecode} = require('../compiler')
+const {abi,bytecode} = require('../deploy/compiler')
 
 // using ganache provider to provide testing account
 const web3 = new Web3(ganache.provider());
