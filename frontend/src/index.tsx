@@ -24,13 +24,14 @@ const config = {
 const theme = extendTheme({...config})
 root.render(
   <React.StrictMode>
+    <ChakraProvider {...{theme}} >
     <EthereumContextProvider>
     <UserContextProvider>
-    <ChakraProvider {...{theme}} >
     <App />
-    </ChakraProvider>
     </UserContextProvider>
     </EthereumContextProvider>
+    </ChakraProvider>
+
   </React.StrictMode>
 );
 
