@@ -1,4 +1,6 @@
 import  { useEffect, useState } from "react"
+
+
 import Web3 from "web3"
 
 
@@ -18,7 +20,7 @@ const useWeb3 = ()=>{
             }
         }
         init()
-    },[window])
+    },[])
     return [web3,isloading]
 }
 

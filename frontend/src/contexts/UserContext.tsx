@@ -1,15 +1,16 @@
-import { createContext, useEffect, useState } from "react";
-import useWeb3 from "../eth/useWeb3";
+import { createContext, useContext, useEffect, useState } from "react";
+import { ethereumContext } from "./EthereumContext";
 
 export const userContext = createContext({user:"",balance:"",fetchBalance:async()=>{}})
 
 const UserContextProvider = (props:any)=>{
-    const [web3] = useWeb3()
+    const {web3} = useContext(ethereumContext)
     const [user,setuser] = useState("")
     const [balance,setbalance] = useState("")
+    
     useEffect(()=>{
         const init = async ()=>{
-            if(web3 && web3 !== true){
+            if(web3 ){
                const users = await web3.eth.getAccounts()
                const balance = await web3.eth.getBalance(users[0])
                setuser(users[0])
@@ -17,9 +18,13 @@ const UserContextProvider = (props:any)=>{
             }
         }
         init()
-    },[web3,(window as any).etherium])
+    },[web3])
+    useEffect(()=>{
+        (window as any).ethereum.on("accountsChanged", ()=>{window.location.reload()})
+    },[])
+    
     const fetchBalance = async()=>{
-        if(web3 && web3 !== true){
+        if(web3){
             const balance = await web3.eth.getBalance(user)
             setbalance(web3.utils.fromWei(balance,"ether"))
          }

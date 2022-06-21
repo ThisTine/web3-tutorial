@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import useWeb3 from "./useWeb3"
 import { Contract } from "web3-eth-contract";
+import Web3 from "web3";
 
 // REPLACE WITH YOUR ABI
 const abi:any[] = [
@@ -47,19 +47,22 @@ const abi:any[] = [
 // REPLACE WITH YOUR ADDRESS
 const address = "0x8D030D709c5be9C8d77d4298A42FC8b5ccE2d406"
 
-const useContract = ()=>{
-    const [web3,isloading] = useWeb3()
+const useContract = (web3:Web3 | null | boolean)=>{
+    // const [web3,isloading] = useWeb3()
     const [contract,setContract] = useState<Contract|null>(null)
     useEffect(()=>{
         const init = async()=>{
-        if(!isloading && web3 && web3 !== true){
+        if(web3 && web3 !== true){
+
             const account = (await web3.eth.getAccounts())[0]
            const contract = new web3.eth.Contract(abi,address,{from:account})
+
+           
            setContract(contract)
         }
     }
     init()
-},[web3,isloading])
+},[web3])
     return contract
 }
 

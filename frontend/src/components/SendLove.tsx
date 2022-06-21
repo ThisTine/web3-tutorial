@@ -1,21 +1,21 @@
 import { VStack, Heading, Textarea, Input, HStack, Button, useBoolean, InputGroup, InputRightAddon, useToast } from '@chakra-ui/react'
 import { useContext, useState } from 'react'
+import { ethereumContext } from '../contexts/EthereumContext'
 import { userContext } from '../contexts/UserContext'
-import useContract from '../eth/useContract'
-import useWeb3 from '../eth/useWeb3'
 
 const SendLove = () => {
-    const [web3] = useWeb3()
-    const contract = useContract()
+    const {web3,contract} = useContext(ethereumContext)
     const [isLoading,{on,off}] = useBoolean(false);
     const [form,setform] = useState({money:"",message:""})
     const toast = useToast({status:"error",position:"top-right"})
     const {fetchBalance} = useContext(userContext)
     const send = async ()=>{
         on()
-        if(web3 && web3 !== true)
+        if(web3)
         try{
-            await contract?.methods.sendMessage(form.message).send({...((form.money && parseFloat(form.money) > 0 )&& {value: web3.utils.toWei(form.money,"ether")})  })
+            await contract?.methods.sendMessage(form.message)
+            .send({...((form.money && parseFloat(form.money) > 0 )&& {value: web3.utils.toWei(form.money,"ether")})  })
+            
             await fetchBalance()
             setform({money:"",message:""})
             toast({title:"Success !",status:"success"})

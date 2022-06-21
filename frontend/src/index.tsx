@@ -5,6 +5,7 @@ import App from './App';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import "./polyfill"
 import UserContextProvider from './contexts/UserContext';
+import EthereumContextProvider from './contexts/EthereumContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,11 +24,13 @@ const config = {
 const theme = extendTheme({...config})
 root.render(
   <React.StrictMode>
+    <EthereumContextProvider>
     <UserContextProvider>
     <ChakraProvider {...{theme}} >
     <App />
     </ChakraProvider>
     </UserContextProvider>
+    </EthereumContextProvider>
   </React.StrictMode>
 );
 

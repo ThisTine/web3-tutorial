@@ -1,19 +1,19 @@
 import { Box, Heading, Text, VStack } from '@chakra-ui/react'
-import  { useEffect, useState } from 'react'
-import useContract from './eth/useContract'
+import  { useContext, useEffect, useState } from 'react'
+import { ethereumContext } from './contexts/EthereumContext'
 
 const DashBoard = () => {
-    const contract = useContract()
+    const {contract} = useContext(ethereumContext)
     const [messages,setmessages] = useState<string[]>([])
     const [isowner,setisowner] = useState(true)
     useEffect(()=>{
         if(contract){
-             contract.methods.readmails().call().then((item:any)=>{setmessages([...item])}).catch(()=>setisowner(false))
+             contract.methods.readmails().call()
+             .then((item:any)=>{setmessages([...item])})
+             .catch(()=>setisowner(false))
         }
     },[contract])
-    useEffect(()=>{
-        (window as any).ethereum.on("accountsChanged", ()=>{window.location.reload()})
-    },[])
+    
   return (
     <Box w="100%" shadow={"sm"} p={5} bg="white" padding={5} rounded="2xl" border={"1px solid"} borderColor="blackAlpha.300" >
         <Heading>Messages</Heading>
