@@ -1,12 +1,9 @@
 import { Avatar,  Container, Heading, HStack, Text } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { userContext } from "../contexts/UserContext";
 
 const NavBar = () => {
   const { user,balance } = useContext(userContext);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <HStack bg="white" p={5} borderBottom={"1px solid"} borderColor="blackAlpha.300" mb={10}>
       <Container maxW={"container.lg"}>
