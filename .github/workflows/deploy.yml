@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: html-artifact
-          path: ./build
+          path: ./frontend/build
   
   upload:
     name: 🌨️ upload to server
