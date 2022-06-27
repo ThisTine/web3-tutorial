@@ -45,7 +45,7 @@ const abi:any[] = [
   ]
 
 // REPLACE WITH YOUR ADDRESS
-const address = "0x8D030D709c5be9C8d77d4298A42FC8b5ccE2d406"
+const address = "0xc38919f342f368f594ff60819efb079cf1f9a0b2f8d25bdd474a4a10c560c056"
 
 const useContract = (web3:Web3 | null | boolean)=>{
     // const [web3,isloading] = useWeb3()
