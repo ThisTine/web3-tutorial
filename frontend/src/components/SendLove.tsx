@@ -7,7 +7,11 @@ const SendLove = () => {
     const toast = useToast({status:"error",position:"top-right"})
     const send = async ()=>{
         on()
-        
+        try{
+            // send transaction
+        }catch(err:any){
+            toast({status:"error",title:"Error",description:err})
+        }
         off()
     }
     return (
